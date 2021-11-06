@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="LogoTC.jpg" width="180" title="Tech Consult">
+</p>
+
 # Generador Datos Desafio
 
 Este proyecto expone un API REST que entrega la siguiente información:
