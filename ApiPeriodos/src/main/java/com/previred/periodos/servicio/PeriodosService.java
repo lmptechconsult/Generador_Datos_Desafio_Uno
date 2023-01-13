@@ -58,7 +58,7 @@ public class PeriodosService {
             List<LocalDate> fechasFaltantes = new ArrayList<LocalDate>();
             long Meses = ChronoUnit.MONTHS.between(periodo.getFechaCreacion(), periodo.getFechaFin());
 
-            LocalDate Aux=periodo.getFechaCreacion();
+             LocalDate Aux=periodo.getFechaCreacion();
 
                 for(int i=0; i<=Meses; i++) {	        
 
