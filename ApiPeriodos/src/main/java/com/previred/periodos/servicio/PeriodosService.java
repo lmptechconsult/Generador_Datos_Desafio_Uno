@@ -3,6 +3,7 @@ package com.previred.periodos.servicio;
 import com.previred.periodos.swagger.codegen.model.Periodo;
 import com.previred.periodos.tools.RandomDate;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -47,6 +48,30 @@ public class PeriodosService {
         periodo.setFechas(fechas.stream()
                 .sorted()
                 .collect(Collectors.toList()));
+        
+        /** 
+         *  Metodo que compara las fechas agregadas al servicio REST para agregar las fechas faltantes
+         * 
+         *   Autor:Cristhofer Palma   
+         **/
+        
+            List<LocalDate> fechasFaltantes = new ArrayList<LocalDate>();
+            long Meses = ChronoUnit.MONTHS.between(periodo.getFechaCreacion(), periodo.getFechaFin());
+
+            LocalDate Aux=periodo.getFechaCreacion();
+
+                for(int i=0; i<=Meses; i++) {	        
+
+                    if(!periodo.getFechas().contains(Aux)) {
+                        if(!periodo.getFechaCreacion().equals(Aux)||!periodo.getFechaFin().equals(Aux)){
+			fechasFaltantes.add(Aux);        
+                        }
+                    }
+
+                        Aux = Aux.plusMonths(1);
+		}
+
+		periodo.setFechasFaltantes(fechasFaltantes);
 
         return periodo;
     }

@@ -30,6 +30,10 @@ public class Periodo   {
   @JsonProperty("fechas")
   @Valid
   private List<LocalDate> fechas = null;
+  
+    @JsonProperty("fechasFaltantes")
+  @Valid
+  private List<LocalDate> fechasFaltantes = null;
 
   public Periodo id(Long id) {
     this.id = id;
@@ -105,6 +109,14 @@ public class Periodo   {
     this.fechas.add(fechasItem);
     return this;
   }
+  
+        public List<LocalDate> getFechasFaltantes() {
+        return fechasFaltantes;
+    }
+
+    public void setFechasFaltantes(List<LocalDate> fechasFaltantes) {
+        this.fechasFaltantes = fechasFaltantes;
+    }
 
   /**
    * Get fechas
@@ -152,6 +164,7 @@ public class Periodo   {
     sb.append("    fechaCreacion: ").append(toIndentedString(fechaCreacion)).append("\n");
     sb.append("    fechaFin: ").append(toIndentedString(fechaFin)).append("\n");
     sb.append("    fechas: ").append(toIndentedString(fechas)).append("\n");
+    sb.append("    fechasFaltantes: ").append(toIndentedString(fechasFaltantes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
